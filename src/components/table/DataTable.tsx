@@ -27,8 +27,9 @@ type Props = {
   data: any[];
   columns: any[];
   title?: string;
+  form?: React.ReactNode
 };
-export function DataTable({ data, columns, title }: Props) {
+export function DataTable({ data, columns, title, form }: Props) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -63,7 +64,8 @@ export function DataTable({ data, columns, title }: Props) {
   return (
     <div className="w-full bg-white p-4 rounded-xl shadow-soft-2xl">
       <span className="text-muted-foreground font-semibold text-sm">{title}</span>
-      <div className="flex items-center py-4">
+      <div className="flex items-center gap-4 py-4">
+        {form}
         <Input
           placeholder="Filter ..."
           // value={(table.getColumn()?.getFilterValue() as string) ?? ""}
@@ -72,7 +74,7 @@ export function DataTable({ data, columns, title }: Props) {
             // table.getColumn("email")?.setFilterValue(event.target.value)
             setFiltering(event.target.value)
           }
-          className="max-w-sm"
+          className="max-w-sm ml-auto"
         />
         <DataTableViewOptions table={table} />
       </div>

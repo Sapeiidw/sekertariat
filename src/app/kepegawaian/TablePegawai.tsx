@@ -11,6 +11,7 @@ import { AspectRatio } from "../../components/ui/aspect-ratio";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 import { Button } from "../../components/ui/button";
 import { useToast } from "../../components/ui/use-toast";
+import FormPegawai from "./FormPegawai";
 
 type Props = {};
 
@@ -25,6 +26,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Teknologi",
         gaji: 80000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 2,
@@ -35,6 +38,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Keuangan",
         gaji: 60000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 3,
@@ -45,6 +50,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Teknologi",
         gaji: 75000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 4,
@@ -55,6 +62,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Keuangan",
         gaji: 85000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 5,
@@ -65,6 +74,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Teknologi",
         gaji: 70000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 6,
@@ -75,6 +86,8 @@ const TablePegawai = (props: Props) => {
         departemen: "SDM",
         gaji: 70000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 7,
@@ -85,6 +98,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Teknologi",
         gaji: 75000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 8,
@@ -95,6 +110,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Keuangan",
         gaji: 60000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 9,
@@ -105,6 +122,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Teknologi",
         gaji: 72000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 10,
@@ -115,6 +134,8 @@ const TablePegawai = (props: Props) => {
         departemen: "SDM",
         gaji: 78000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 11,
@@ -125,6 +146,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Teknologi",
         gaji: 70000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 12,
@@ -135,6 +158,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Teknologi",
         gaji: 80000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 13,
@@ -145,6 +170,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Keuangan",
         gaji: 60000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 14,
@@ -155,6 +182,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Teknologi",
         gaji: 72000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 15,
@@ -165,6 +194,8 @@ const TablePegawai = (props: Props) => {
         departemen: "SDM",
         gaji: 78000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 16,
@@ -175,6 +206,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Teknologi",
         gaji: 70000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 17,
@@ -185,6 +218,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Keuangan",
         gaji: 85000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 18,
@@ -195,6 +230,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Keuangan",
         gaji: 60000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 19,
@@ -205,6 +242,8 @@ const TablePegawai = (props: Props) => {
         departemen: "Teknologi",
         gaji: 75000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
       {
         id: 20,
@@ -215,6 +254,8 @@ const TablePegawai = (props: Props) => {
         departemen: "SDM",
         gaji: 70000,
         status: "Aktif",
+        reward: "Reward",
+        punish: "Punish",
       },
     ];
     const { toast } = useToast()
@@ -315,6 +356,18 @@ const TablePegawai = (props: Props) => {
       },
     },
     {
+      accessorKey: "reward",
+      header: ({ column }) => {
+        return <DataTableColumnHeader column={column} title="Reward" />;
+      },
+    },
+    {
+      accessorKey: "punish",
+      header: ({ column }) => {
+        return <DataTableColumnHeader column={column} title="Punishment" />;
+      },
+    },
+    {
         // id: "actions",/
         header: "Action",
         cell: ({ row }) => {
@@ -345,7 +398,7 @@ const TablePegawai = (props: Props) => {
       },
   ];
 
-  return <DataTable columns={columns} data={data} />;
+  return <DataTable columns={columns} data={data} form={<FormPegawai/>} title="Tabel Daftar Pegawai" />;
 };
 
 export default TablePegawai;
