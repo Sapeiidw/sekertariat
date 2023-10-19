@@ -90,7 +90,7 @@ function FormPegawai({}: Props) {
         </SheetTrigger>
         <SheetContent className="h-screen overflow-auto" >
           <SheetHeader>
-            <SheetTitle>Form Add Employee</SheetTitle>
+            <SheetTitle>Form Tambah Data Pegawai</SheetTitle>
             <SheetDescription>
               Ini adalah form untuk menambah data pegawai.
             </SheetDescription>
@@ -98,7 +98,7 @@ function FormPegawai({}: Props) {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="w-full space-y-4 my-4"
+              className="w-full space-y-6 my-4"
             >
               <FormField
                 control={form.control}
@@ -110,7 +110,7 @@ function FormPegawai({}: Props) {
                       <Input placeholder="Nama Pegawai" {...field} />
                     </FormControl>
                     <FormDescription>
-                      This is your public display name.
+                      Isi nama pegawai yang akan ditambahkan.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -121,14 +121,14 @@ function FormPegawai({}: Props) {
                 name="jabatan"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>E-mail</FormLabel>
+                    <FormLabel>Jabatan.</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select Jabatan" />
+                          <SelectValue placeholder="Pilih Jabatan" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -139,7 +139,7 @@ function FormPegawai({}: Props) {
                         ))}
                       </SelectContent>
                     </Select>
-                    <FormDescription>Pilih Jabatan</FormDescription>
+                    <FormDescription>Pilih jabatan pegawai.</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -156,7 +156,7 @@ function FormPegawai({}: Props) {
                     >
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select Departemen" />
+                          <SelectValue placeholder="Pilih Departemen" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -167,7 +167,7 @@ function FormPegawai({}: Props) {
                         ))}
                       </SelectContent>
                     </Select>
-                    <FormDescription>Pilih Jabatan</FormDescription>
+                    <FormDescription>Pilih Departemen Pegawai</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -188,7 +188,7 @@ function FormPegawai({}: Props) {
                       />
                     </FormControl>
                     <FormDescription>
-                      This is your avarage salary
+                      Isi gaji pegawai yang akan ditambahkan.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -201,10 +201,10 @@ function FormPegawai({}: Props) {
                   <FormItem>
                     <FormLabel>Reward</FormLabel>
                     <FormControl>
-                      <Input placeholder="Nama Pegawai" {...field} />
+                      <Input placeholder="Reward" {...field} />
                     </FormControl>
                     <FormDescription>
-                      This is your public display name.
+                      Ini merupakan reward yang diperoleh pegawai.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -217,10 +217,10 @@ function FormPegawai({}: Props) {
                   <FormItem>
                     <FormLabel>Punish</FormLabel>
                     <FormControl>
-                      <Input placeholder="Nama Pegawai" {...field} />
+                      <Input placeholder="Punishment" {...field} />
                     </FormControl>
                     <FormDescription>
-                      This is your public display name.
+                      Ini merupakan punishment yang diperoleh pegawai.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -233,7 +233,7 @@ function FormPegawai({}: Props) {
                   <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                     <div className="space-y-0.5">
                       <FormLabel className="text-base">Status</FormLabel>
-                      <FormDescription>Apakah pegawai aktif?</FormDescription>
+                      <FormDescription>Isi status. Apakah pegawai aktif?</FormDescription>
                     </div>
                     <FormControl>
                       <Switch

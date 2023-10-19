@@ -61,7 +61,7 @@ const TablePegawai = (props: Props) => {
         jabatan: "Manajer Keuangan",
         departemen: "Keuangan",
         gaji: 85000,
-        status: "Aktif",
+        status: "Cuti",
         reward: "Reward",
         punish: "Punish",
       },
@@ -97,7 +97,7 @@ const TablePegawai = (props: Props) => {
         jabatan: "Pengembang Perangkat Lunak",
         departemen: "Teknologi",
         gaji: 75000,
-        status: "Aktif",
+        status: "Cuti",
         reward: "Reward",
         punish: "Punish",
       },
@@ -343,7 +343,7 @@ const TablePegawai = (props: Props) => {
         let badgeComponent;
 
         switch (data.status) {
-          case "inactive":
+          case "Cuti":
             badgeComponent = (
               <Badge variant={"destructive"}>{data.status}</Badge>
             );
@@ -384,9 +384,9 @@ const TablePegawai = (props: Props) => {
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Actions</DropdownMenuLabel>
                 <DropdownMenuItem
-                  onClick={() => navigator.clipboard.writeText(employee.id)}
+                  onClick={() => navigator.clipboard.writeText(employee.nama)}
                 >
-                  Copy payment ID
+                  Copy Nama Pegawai
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>View Detail</DropdownMenuItem>
