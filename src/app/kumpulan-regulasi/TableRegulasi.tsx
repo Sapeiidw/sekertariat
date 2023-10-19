@@ -216,11 +216,6 @@ const TableRegulasi = (props: Props) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem
-                onClick={() => navigator.clipboard.writeText(data.nomor_surat)}
-              >
-                Copy payment ID
-              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>View Detail</DropdownMenuItem>
               <DropdownMenuItem onClick={() => deleteData(data)}>

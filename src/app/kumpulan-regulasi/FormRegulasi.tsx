@@ -76,9 +76,9 @@ function FormRegulasi({}: Props) {
       </SheetTrigger>
       <SheetContent className="h-screen overflow-auto">
         <SheetHeader>
-          <SheetTitle>Form Add Employee</SheetTitle>
+          <SheetTitle>Form Tambah Data Regulasi</SheetTitle>
           <SheetDescription>
-            Ini adalah form untuk menambah data pegawai.
+            Ini adalah form untuk menambah data regulasi.
           </SheetDescription>
         </SheetHeader>
         <Form {...form}>
@@ -96,7 +96,7 @@ function FormRegulasi({}: Props) {
                     <Input placeholder="Nomor Surat" {...field} />
                   </FormControl>
                   <FormDescription>
-                    This is your public display name.
+                    Nomor Surat Contoh : 1234/XX/2021
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -114,7 +114,7 @@ function FormRegulasi({}: Props) {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select Status" />
+                        <SelectValue placeholder="Pilih Status" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -125,7 +125,7 @@ function FormRegulasi({}: Props) {
                       ))}
                     </SelectContent>
                   </Select>
-                  <FormDescription>Pilih Status</FormDescription>
+                  <FormDescription>Pilih status.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -141,7 +141,7 @@ function FormRegulasi({}: Props) {
                     className="resize-none"
                     {...field}
                   />
-                  <FormDescription>Isi Keterangan surat</FormDescription>
+                  <FormDescription>Isi keterangan surat.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -158,7 +158,7 @@ function FormRegulasi({}: Props) {
                     className="resize-none"
                     {...field}
                   />
-                  <FormDescription>Isi Tujuan surat</FormDescription>
+                  <FormDescription>Isi tujuan surat.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
