@@ -75,9 +75,9 @@ function FormPemasukan({}: Props) {
       </SheetTrigger>
       <SheetContent className="h-screen overflow-auto">
         <SheetHeader>
-          <SheetTitle>Form Add Employee</SheetTitle>
+          <SheetTitle>Form Tambah Pemasukan Keuangan</SheetTitle>
           <SheetDescription>
-            Ini adalah form untuk menambah data pegawai.
+            Ini adalah form untuk menambah data pemasukan.
           </SheetDescription>
         </SheetHeader>
         <Form {...form}>
@@ -102,7 +102,7 @@ function FormPemasukan({}: Props) {
                       }
                     />
                   </FormControl>
-                  <FormDescription>This is your avarage salary</FormDescription>
+                  <FormDescription>Jumlah uang masuk.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -119,7 +119,7 @@ function FormPemasukan({}: Props) {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select Status" />
+                        <SelectValue placeholder="Pilih Status" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -145,7 +145,7 @@ function FormPemasukan({}: Props) {
                     <Textarea placeholder="Keterangan" {...field} />
                   </FormControl>
                   <FormDescription>
-                    This is your public display name.
+                    Keterangan tambahan untuk pemasukan.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

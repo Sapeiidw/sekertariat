@@ -7,7 +7,7 @@ import { ArrowDownIcon, ArrowUpIcon } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Badge } from "../../components/ui/badge";
 import FormPengeluaran from "./FormPengeluaran";
-import FormAnggaran from "./FormAnggaran";
+import FormStatusKeuangan from "./FormStatusKeuangan";
 
 type Props = {};
 
@@ -24,61 +24,61 @@ const TableStatusKeuangan = (props: Props) => {
       id: 1,
       uang_kas: 5000,
       jenis_keuangan: "Pemasukan",
-      status: "Tuntas",
+      status: "Finish",
     },
     {
       id: 2,
       uang_kas: 2500,
       jenis_keuangan: "Pengeluaran",
-      status: "Dalam Proses",
+      status: "Process",
     },
     {
       id: 3,
       uang_kas: 10000,
       jenis_keuangan: "Pemasukan",
-      status: "Tuntas",
+      status: "Finish",
     },
     {
       id: 4,
       uang_kas: 3500,
       jenis_keuangan: "Pengeluaran",
-      status: "Dalam Proses",
+      status: "Process",
     },
     {
       id: 5,
       uang_kas: 8000,
       jenis_keuangan: "Pemasukan",
-      status: "Tuntas",
+      status: "Finish",
     },
     {
       id: 6,
       uang_kas: 4500,
       jenis_keuangan: "Pengeluaran",
-      status: "Dalam Proses",
+      status: "Process",
     },
     {
       id: 7,
       uang_kas: 6000,
       jenis_keuangan: "Pemasukan",
-      status: "Tuntas",
+      status: "Finish",
     },
     {
       id: 8,
       uang_kas: 3000,
       jenis_keuangan: "Pengeluaran",
-      status: "Dalam Proses",
+      status: "Process",
     },
     {
       id: 9,
       uang_kas: 7000,
       jenis_keuangan: "Pemasukan",
-      status: "Tuntas",
+      status: "Finish",
     },
     {
       id: 10,
       uang_kas: 4000,
       jenis_keuangan: "Pengeluaran",
-      status: "Dalam Proses",
+      status: "Process",
     },
   ];
 
@@ -99,7 +99,7 @@ const TableStatusKeuangan = (props: Props) => {
         let badgeComponent;
 
         switch (data.status) {
-          case "proses":
+          case "Process":
             badgeComponent = (
               <Badge className="capitalize" variant={"secondary"}>
                 {data.status}
@@ -138,7 +138,7 @@ const TableStatusKeuangan = (props: Props) => {
     <DataTable
       columns={columns}
       data={data}
-      form={<FormAnggaran />}
+      form={<FormStatusKeuangan />}
       title="Tabel Data StatausKeuangan Keuangan"
     />
   );

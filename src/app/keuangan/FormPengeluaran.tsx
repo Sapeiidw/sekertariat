@@ -75,9 +75,9 @@ function FormPengeluaran({}: Props) {
       </SheetTrigger>
       <SheetContent className="h-screen overflow-auto">
         <SheetHeader>
-          <SheetTitle>Form Add Employee</SheetTitle>
+          <SheetTitle>Form Tambah Pengeluaran Keuangan</SheetTitle>
           <SheetDescription>
-            Ini adalah form untuk menambah data pegawai.
+            Ini adalah form untuk menambah data pengeluaran.
           </SheetDescription>
         </SheetHeader>
         <Form {...form}>
@@ -90,7 +90,7 @@ function FormPengeluaran({}: Props) {
               name="jumlah"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Jumlah Pemasukan</FormLabel>
+                  <FormLabel>Jumlah Pengeluaran</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -102,7 +102,7 @@ function FormPengeluaran({}: Props) {
                       }
                     />
                   </FormControl>
-                  <FormDescription>This is your avarage salary</FormDescription>
+                  <FormDescription>Jumlah pengeluaran</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -145,7 +145,7 @@ function FormPengeluaran({}: Props) {
                     <Textarea placeholder="Keterangan" {...field} />
                   </FormControl>
                   <FormDescription>
-                    This is your public display name.
+                    Keterangan pengeluaran yang dilakukan
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

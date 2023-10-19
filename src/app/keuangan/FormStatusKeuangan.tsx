@@ -31,28 +31,18 @@ import {
 import { toast } from "../../components/ui/use-toast";
 import { Input } from "../../components/ui/input";
 import { Switch } from "../../components/ui/switch";
-import { CalendarIcon, PlusIcon } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import { Separator } from "../../components/ui/separator";
 import { Textarea } from "../../components/ui/textarea";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "@radix-ui/react-popover";
-import { format } from "date-fns";
-import { cn } from "../../lib/utils";
-import { Calendar } from "../../components/ui/calendar";
 
 type Props = {};
 
-function FormAnggaran({}: Props) {
+function FormStatusKeuangan({}: Props) {
   const FormSchema = z.object({
-    nomor: z.string(),
-    item: z.string(),
-    tanggal_perencanaan: z.date(),
-    anggaran: z.number(),
+    id: z.number(),
+    keterangan: z.string(),
+    jumlah: z.string(),
     status: z.string(),
-    jenis_anggaran: z.string(),
   });
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -85,99 +75,22 @@ function FormAnggaran({}: Props) {
       </SheetTrigger>
       <SheetContent className="h-screen overflow-auto">
         <SheetHeader>
-          <SheetTitle>Form Tambah Rencana Anggaran</SheetTitle>
+          <SheetTitle>Form Tambah Status Keuangan</SheetTitle>
           <SheetDescription>
-            Ini adalah form untuk menambah data rencan anggaran keuangan.
+            Ini adalah form untuk menambah data status keuangan.
           </SheetDescription>
         </SheetHeader>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="w-full space-y-6 my-4"
+            className="w-full space-y-4 my-4"
           >
             <FormField
               control={form.control}
-              name="nomor"
+              name="jumlah"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nomor Anggaran</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Nomor Anggaran" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    Nomor rencana anggaran keuangan.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="item"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Item</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Item" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    Item yang akan dianggarkan.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="tanggal_perencanaan"
-              render={({ field }) => (
-                <FormItem className="flex flex-col">
-                  <FormLabel>Tanggal Perencanaan</FormLabel>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <FormControl>
-                        <Button
-                          variant={"outline"}
-                          className={cn(
-                            " pl-3 text-left font-normal",
-                            !field.value && "text-muted-foreground"
-                          )}
-                        >
-                          {field.value ? (
-                            format(field.value, "PPP")
-                          ) : (
-                            <span>Pilih Tanggal</span>
-                          )}
-                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
-                      </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={field.value}
-                        onSelect={field.onChange}
-                        disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01")
-                        }
-                        className="bg-background shadow-lg"
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
-                  <FormDescription>
-                    Tanggal rencana anggaran keuangan.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="anggaran"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Jumlah Anggaran</FormLabel>
+                  <FormLabel>Jumlah</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -189,9 +102,7 @@ function FormAnggaran({}: Props) {
                       }
                     />
                   </FormControl>
-                  <FormDescription>
-                    Jumlah anggaran yang akan dikeluarkan.
-                  </FormDescription>
+                  <FormDescription>Jumlah Uang</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -226,15 +137,15 @@ function FormAnggaran({}: Props) {
             />
             <FormField
               control={form.control}
-              name="jenis_anggaran"
+              name="keterangan"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Jenis Anggaran</FormLabel>
+                  <FormLabel>Keterangan</FormLabel>
                   <FormControl>
-                    <Input placeholder="Jenis Anggaran" {...field} />
+                    <Textarea placeholder="Keterangan" {...field} />
                   </FormControl>
                   <FormDescription>
-                    Jenis anggaran yang akan dikeluarkan.
+                    
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -251,4 +162,4 @@ function FormAnggaran({}: Props) {
   );
 }
 
-export default FormAnggaran;
+export default FormStatusKeuangan;
