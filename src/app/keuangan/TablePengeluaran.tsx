@@ -123,6 +123,16 @@ const TablePengeluaran = (props: Props) => {
       header: ({ column }) => {
         return <DataTableColumnHeader column={column} title="Jumlah" />;
       },
+      cell({ row }) {
+        const data = row.original;
+        return <div className="text-right">{data.jumlah.toLocaleString(
+          "id-ID",
+          {
+            style: "currency",
+            currency: "IDR",
+          }
+        )}</div>;
+      }
     },
     {
       accessorKey: "status",

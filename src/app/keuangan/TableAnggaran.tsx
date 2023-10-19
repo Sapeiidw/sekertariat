@@ -205,7 +205,7 @@ const TableAnggaran = (props: Props) => {
         let badgeComponent;
 
         switch (data.status) {
-          case "proses":
+          case "Dalam Proses":
             badgeComponent = (
               <Badge className="capitalize" variant={"secondary"}>
                 {data.status}
@@ -218,7 +218,7 @@ const TableAnggaran = (props: Props) => {
             );
             break;
         }
-        return <div className="">{badgeComponent}</div>;
+        return <div className="flex items-center justify-center">{badgeComponent}</div>;
       },
     },
     {
