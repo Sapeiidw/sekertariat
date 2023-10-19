@@ -79,41 +79,41 @@ const TableAgenda = (props: Props) => {
     {
       accessorKey: "title",
       header: ({ column }) => {
-        return <DataTableColumnHeader column={column} title="title" />;
+        return <DataTableColumnHeader column={column} title="Judul Kegiatan" />;
       },
     },
     {
       accessorKey: "description",
       header: ({ column }) => {
-        return <DataTableColumnHeader column={column} title="description" />;
+        return <DataTableColumnHeader column={column} title="Deskripsi Kegiatan" />;
       },
     },
-    {
-      accessorKey: "participants",
-      header: ({ column }) => {
-        return <DataTableColumnHeader column={column} title="participants" />;
-      },
-      cell({row}) {
-        const data = row.original;
-        return (
-          <div className="flex flex-col gap-2">
-            {data.participants.map((participant) => (
-              <span key={participant} className="capitalize">{participant}</span>
-            ))}
-          </div>
-        );
-      },
-    },
+    // {
+    //   accessorKey: "participants",
+    //   header: ({ column }) => {
+    //     return <DataTableColumnHeader column={column} title="participants" />;
+    //   },
+    //   cell({row}) {
+    //     const data = row.original;
+    //     return (
+    //       <div className="flex flex-col gap-2">
+    //         {data.participants.map((participant) => (
+    //           <span key={participant} className="capitalize">{participant}</span>
+    //         ))}
+    //       </div>
+    //     );
+    //   },
+    // },
     {
       accessorKey: "start",
       header: ({ column }) => {
-        return <DataTableColumnHeader column={column} title="start" />;
+        return <DataTableColumnHeader column={column} title="Tanggal Mulai" />;
       },
       cell({row}) {
         const data = row.original;
         return (
           <div className="flex flex-col gap-2">
-            <span className="capitalize">{new Date(data.start).toLocaleString(
+            <span className="capitalize">{!!data &&  new Date(data.start).toLocaleString(
                 "id-ID",
                 {
                     weekday: "long",
@@ -123,8 +123,8 @@ const TableAgenda = (props: Props) => {
                     hour: "numeric",
                     minute: "numeric",
                     second: "numeric",
-                    timeZoneName: "short",
-                    timeZone: "Asia/Makassar",
+                    // timeZoneName: "short",
+                    // timeZone: "Asia/Makassar",
                 }
                 )}</span>
           </div>
@@ -134,13 +134,13 @@ const TableAgenda = (props: Props) => {
     {
       accessorKey: "end",
       header: ({ column }) => {
-        return <DataTableColumnHeader column={column} title="Jumlah" />;
+        return <DataTableColumnHeader column={column} title="Tanggal Selesai" />;
       },
       cell({row}) {
         const data = row.original;
         return (
           <div className="flex flex-col gap-2">
-            <span className="capitalize">{new Date(data.end).toLocaleString(
+            <span className="capitalize">{!!data &&  new Date(data.end).toLocaleString(
                 "id-ID",
                 {
                     weekday: "long",
@@ -150,8 +150,8 @@ const TableAgenda = (props: Props) => {
                     hour: "numeric",
                     minute: "numeric",
                     second: "numeric",
-                    timeZoneName: "short",
-                    timeZone: "Asia/Makassar",
+                    // timeZoneName: "short",
+                    // timeZone: "Asia/Makassar",
                 }
                 )}</span>
           </div>
@@ -197,7 +197,7 @@ const TableAgenda = (props: Props) => {
             );
             break;
         }
-        return <div className="">{badgeComponent}</div>;
+        return <div className="flex items-center justify-center">{badgeComponent}</div>;
       },
     },
   ];
@@ -207,7 +207,7 @@ const TableAgenda = (props: Props) => {
       columns={columns}
       data={data}
       form={<FormAgenda />}
-      title="Tabel Daftar Agenda Keuangan"
+      title="Tabel Daftar Agenda Kegiatan"
     />
   );
 };

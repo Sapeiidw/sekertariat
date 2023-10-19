@@ -33,7 +33,11 @@ import { Input } from "../../components/ui/input";
 import { Switch } from "../../components/ui/switch";
 import { CalendarIcon, PlusIcon } from "lucide-react";
 import { Separator } from "../../components/ui/separator";
-import { Popover, PopoverTrigger, PopoverContent } from "@radix-ui/react-popover";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@radix-ui/react-popover";
 import { format } from "date-fns";
 import { cn } from "../../lib/utils";
 import { Calendar } from "../../components/ui/calendar";
@@ -74,116 +78,70 @@ function FormAgenda({}: Props) {
   ];
 
   return (
-    
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button>
-            <PlusIcon className="mr-2 w-5 h-5" />
-            Add New
-          </Button>
-        </SheetTrigger>
-        <SheetContent className="h-screen overflow-auto" >
-          <SheetHeader>
-            <SheetTitle>Form Add Employee</SheetTitle>
-            <SheetDescription>
-              Ini adalah form untuk menambah data pegawai.
-            </SheetDescription>
-          </SheetHeader>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="w-full space-y-4 my-4"
-            >
-              <FormField
-                control={form.control}
-                name="title"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Agenda</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Agenda" {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      This is your public display name.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="status"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Status</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select status" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {status.map((item) => (
-                          <SelectItem key={item.value} value={item.value}>
-                            {item.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormDescription>Pilih Jabatan</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-               <FormField
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button>
+          <PlusIcon className="mr-2 w-5 h-5" />
+          Add New
+        </Button>
+      </SheetTrigger>
+      <SheetContent className="h-screen overflow-auto">
+        <SheetHeader>
+          <SheetTitle>Form Tambah Agenda</SheetTitle>
+          <SheetDescription>
+            Ini adalah form untuk menambah agenda kegiatan.
+          </SheetDescription>
+        </SheetHeader>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="w-full space-y-4 my-4"
+          >
+            <FormField
               control={form.control}
-              name="start"
+              name="title"
               render={({ field }) => (
-                <FormItem className="flex flex-col">
-                  <FormLabel>Tanggal Selesai Kegiatan</FormLabel>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <FormControl>
-                        <Button
-                          variant={"outline"}
-                          className={cn(
-                            " pl-3 text-left font-normal",
-                            !field.value && "text-muted-foreground"
-                          )}
-                        >
-                          {field.value ? (
-                            format(field.value, "PPP")
-                          ) : (
-                            <span>Pick a date</span>
-                          )}
-                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
-                      </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={field.value}
-                        onSelect={field.onChange}
-                        disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01")
-                        }
-                        className="bg-background shadow-lg"
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
+                <FormItem>
+                  <FormLabel>Agenda</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Agenda" {...field} />
+                  </FormControl>
                   <FormDescription>
-                    Your date of birth is used to calculate your age.
+                    Judul agenda kegiatan yang akan dilaksanakan.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
-               <FormField
+            <FormField
+              control={form.control}
+              name="status"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Status</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select status" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {status.map((item) => (
+                        <SelectItem key={item.value} value={item.value}>
+                          {item.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormDescription>Status agenda kegiatan.</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
               control={form.control}
               name="start"
               render={({ field }) => (
@@ -202,7 +160,7 @@ function FormAgenda({}: Props) {
                           {field.value ? (
                             format(field.value, "PPP")
                           ) : (
-                            <span>Pick a date</span>
+                            <span>Pilih tanggal</span>
                           )}
                           <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                         </Button>
@@ -222,36 +180,64 @@ function FormAgenda({}: Props) {
                     </PopoverContent>
                   </Popover>
                   <FormDescription>
-                    Your date of birth is used to calculate your age.
+                    Tanggal mulai kegiatan yang akan dilaksanakan.
                   </FormDescription>
                   <FormMessage />
-                </FormItem> 
+                </FormItem>
               )}
             />
-              <FormField
-                control={form.control}
-                name="status"
-                render={({ field }) => (
-                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
-                    <div className="space-y-0.5">
-                      <FormLabel className="text-base">Status</FormLabel>
-                      <FormDescription>Apakah pegawai aktif?</FormDescription>
-                    </div>
-                    <FormControl>
-                      <Switch
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
+            <FormField
+              control={form.control}
+              name="end"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel>Tanggal Selesai Kegiatan</FormLabel>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant={"outline"}
+                          className={cn(
+                            " pl-3 text-left font-normal",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value ? (
+                            format(field.value, "PPP")
+                          ) : (
+                            <span>Pilih tanggal</span>
+                          )}
+                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        disabled={(date) =>
+                          date > new Date() || date < new Date("1900-01-01")
+                        }
+                        className="bg-background shadow-lg"
+                        initialFocus
                       />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-                <Button type="submit" className="w-full">Submit</Button>
-            </form>
-          </Form>
-        </SheetContent>
-      </Sheet>
-
+                    </PopoverContent>
+                  </Popover>
+                  <FormDescription>
+                    Tanggal selesai kegiatan yang akan dilaksanakan.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" className="w-full">
+              Submit
+            </Button>
+          </form>
+        </Form>
+      </SheetContent>
+    </Sheet>
   );
 }
 
