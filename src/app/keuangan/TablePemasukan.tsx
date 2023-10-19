@@ -148,7 +148,7 @@ const TablePemasukan = (props: Props) => {
     },
   ];
   const [data, setData] = useState(pemasukan);
-  return <DataTable columns={columns} data={data} form={<FormPemasukan/>} title="Tabel Daftar Pemasukan Keuangan" />;
+  return <DataTable columns={columns} data={data} form={<FormPemasukan/>} title="Tabel Data Pemasukan Keuangan" />;
 };
 
 export default TablePemasukan;
