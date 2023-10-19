@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DataTable } from "../../components/table/DataTable";
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "../../components/table/DataTableHeader";
@@ -8,9 +8,19 @@ import { cn } from "../../lib/utils";
 import { Badge } from "../../components/ui/badge";
 import FormAgenda from "./FormAgenda";
 
-type Props = {};
+type Props = {
+  form?: boolean;
+};
 
 const TableAgenda = (props: Props) => {
+  const [client, setClient] = useState(false)
+  useEffect(() => {
+    setClient(true)
+    return () => {
+      setClient(false)
+    }
+  }, [])
+  
   type Agenda = {
     id: number;
     start: string; // You can use a more specific date format if needed
@@ -85,7 +95,9 @@ const TableAgenda = (props: Props) => {
     {
       accessorKey: "description",
       header: ({ column }) => {
-        return <DataTableColumnHeader column={column} title="Deskripsi Kegiatan" />;
+        return (
+          <DataTableColumnHeader column={column} title="Deskripsi Kegiatan" />
+        );
       },
     },
     // {
@@ -109,24 +121,24 @@ const TableAgenda = (props: Props) => {
       header: ({ column }) => {
         return <DataTableColumnHeader column={column} title="Tanggal Mulai" />;
       },
-      cell({row}) {
+      cell({ row }) {
         const data = row.original;
         return (
           <div className="flex flex-col gap-2">
-            <span className="capitalize">{!!data &&  new Date(data.start).toLocaleString(
-                "id-ID",
-                {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",  
-                    hour: "numeric",
-                    minute: "numeric",
-                    second: "numeric",
-                    // timeZoneName: "short",
-                    // timeZone: "Asia/Makassar",
-                }
-                )}</span>
+            <span className="capitalize">
+              {!!data &&
+                new Date(data.start).toLocaleString("id-ID", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                  second: "numeric",
+                  // timeZoneName: "short",
+                  // timeZone: "Asia/Makassar",
+                })}
+            </span>
           </div>
         );
       },
@@ -134,26 +146,28 @@ const TableAgenda = (props: Props) => {
     {
       accessorKey: "end",
       header: ({ column }) => {
-        return <DataTableColumnHeader column={column} title="Tanggal Selesai" />;
+        return (
+          <DataTableColumnHeader column={column} title="Tanggal Selesai" />
+        );
       },
-      cell({row}) {
+      cell({ row }) {
         const data = row.original;
         return (
           <div className="flex flex-col gap-2">
-            <span className="capitalize">{!!data &&  new Date(data.end).toLocaleString(
-                "id-ID",
-                {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",  
-                    hour: "numeric",
-                    minute: "numeric",
-                    second: "numeric",
-                    // timeZoneName: "short",
-                    // timeZone: "Asia/Makassar",
-                }
-                )}</span>
+            <span className="capitalize">
+              {!!data &&
+                new Date(data.end).toLocaleString("id-ID", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                  second: "numeric",
+                  // timeZoneName: "short",
+                  // timeZone: "Asia/Makassar",
+                })}
+            </span>
           </div>
         );
       },
@@ -197,7 +211,11 @@ const TableAgenda = (props: Props) => {
             );
             break;
         }
-        return <div className="flex items-center justify-center">{badgeComponent}</div>;
+        return (
+          <div className="flex items-center justify-center">
+            {badgeComponent}
+          </div>
+        );
       },
     },
   ];
@@ -206,7 +224,7 @@ const TableAgenda = (props: Props) => {
     <DataTable
       columns={columns}
       data={data}
-      form={<FormAgenda />}
+      form={props.form ? <FormAgenda /> : <></>}
       title="Tabel Daftar Agenda Kegiatan"
     />
   );

@@ -36,7 +36,7 @@ const chartData = () => {
     labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     datasets: [
       {
-        label: "Balance In",
+        label: "Pemasukan",
         borderColor: "#cb0c9f",
         borderWidth: 3,
         pointRadius: 0,
@@ -56,7 +56,7 @@ const chartData = () => {
         tension: 0.4,
       },
       {
-        label: "Balance Out",
+        label: "Pengeluaran",
         borderColor: "#3A416F",
         borderWidth: 3,
         pointRadius: 0,

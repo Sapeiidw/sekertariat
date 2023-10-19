@@ -11,6 +11,62 @@ type Props = {
 }
 
 const BarChart = ({className}: Props) => {
+  const employeeDistribution = {
+    labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    datasets: [
+      {
+        label: 'Manager',
+        borderColor: '#cb0c9f',
+        borderWidth: 3,
+        pointRadius: 0,
+        fill: true,
+        backgroundColor: 'rgba(203, 12, 159, 0.2)',
+        data: [10, 12, 15, 18, 20, 22, 25, 28, 30],
+        maxBarThickness: 6,
+      },
+      {
+        label: 'Staff',
+        borderColor: '#3A416F',
+        borderWidth: 3,
+        pointRadius: 0,
+        fill: true,
+        backgroundColor: 'rgba(20, 23, 39, 0.2)',
+        data: [20, 22, 25, 28, 30, 32, 35, 38, 40],
+        maxBarThickness: 6,
+      },
+      {
+        label: 'Admin',
+        borderColor: '#ff5733',
+        borderWidth: 3,
+        pointRadius: 0,
+        fill: true,
+        backgroundColor: 'rgba(255, 87, 51, 0.2)',
+        data: [5, 6, 8, 10, 12, 14, 16, 18, 20],
+        maxBarThickness: 6,
+      },
+      {
+        label: 'HRD',
+        borderColor: '#41af22',
+        borderWidth: 3,
+        pointRadius: 0,
+        fill: true,
+        backgroundColor: 'rgba(65, 175, 34, 0.2)',
+        data: [8, 9, 10, 11, 12, 13, 14, 15, 16],
+        maxBarThickness: 6,
+      },
+      {
+        label: 'CEO',
+        borderColor: '#faaf0a',
+        borderWidth: 3,
+        pointRadius: 0,
+        fill: true,
+        backgroundColor: 'rgba(250, 175, 10, 0.2)',
+        data: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        maxBarThickness: 6,
+      },
+    ],
+  };
+  
   const chartData = {
     labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
@@ -102,12 +158,12 @@ const BarChart = ({className}: Props) => {
 
   return (
     <div className={cn('shadow-soft-2xl', className)} style={myStyles}>
-      <Bar data={chartData} options={{
+      <Bar data={employeeDistribution} options={{
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: false,
+            display: true,
           },
         },
         interaction: {
@@ -125,7 +181,7 @@ const BarChart = ({className}: Props) => {
             },
             ticks: {
               display: true,
-              padding: 10,
+              padding: 20,
               color: '#b2b9bf',
               font: {
                 size: 11,

@@ -20,7 +20,7 @@ import { Input } from "../components/ui/input";
 import SideBar from "../components/nav/Sidebar";
 import { DataTable } from "../components/table/DataTable";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDownIcon, Globe2Icon, MoreHorizontal } from "lucide-react";
+import { ArrowBigDown, ArrowDownIcon, ArrowUpDownIcon, ArrowUpIcon, DollarSignIcon, Globe2Icon, MoreHorizontal, UsersIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -34,6 +34,7 @@ import { useToast } from "../components/ui/use-toast";
 import { Checkbox } from "../components/ui/checkbox";
 import { CardExample } from "../components/card/CardExample";
 import DashboardCard from "../components/card/DashboardCard";
+import TableAgenda from "./agenda/TableAgenda";
 
 export default function Home() {
   const { toast } = useToast();
@@ -253,28 +254,29 @@ export default function Home() {
 
   const dashboardData = [
     {
-      title: "Today's Money",
+      title: "Pemasukan",
       amount: 53000,
       percentage: 5,
-      icon: <Globe2Icon size={32} />,
+      icon: <ArrowDownIcon size={32} />,
     },
     {
-      title: "Today's Users",
+      title: "Pengeluaran",
       amount: 2300,
       percentage: 3,
-      icon: <Globe2Icon size={32} />,
+      icon: <ArrowUpIcon size={32} />,
     },
     {
-      title: "New Clients",
+      title: "Saldo",
       amount: 1234,
       percentage: -5,
-      icon: <Globe2Icon size={32} />,
+      icon: <DollarSignIcon size={32} />,
     },
     {
-      title: "Sales",
+      title: "Pegawai",
       amount: 345213,
       percentage: 15,
-      icon: <Globe2Icon size={32} />,
+      icon: <UsersIcon size={32} />,
+      type: 'number'
     },
   ];
 
@@ -288,44 +290,13 @@ export default function Home() {
             amount={item.amount}
             percentage={item.percentage}
             icon={item.icon}
+            type={item.type}
           />
         ))}
       </div>
       <LineChart className="h-[400px]"></LineChart>
       <BarChart></BarChart>
-      <div className="flex gap-2 bg-white p-4 rounded-lg shadow-soft-2xl">
-        <Button variant={"destructive"}>Ini button</Button>
-        <Button variant={"secondary"}>Ini button</Button>
-        <Button variant={"ghost"}>Ini button</Button>
-        <Button variant={"outline"}>Ini button</Button>
-        <Button className="bg-accent">Ini button</Button>
-      </div>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="p-4 bg-white rounded-lg flex flex-col gap-4 shadow-soft-2xl"
-        >
-          <FormField
-            control={form.control}
-            name="username"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input placeholder="shadcn" {...field} />
-                </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          ></FormField>
-          <Button type="submit">Submit</Button>
-        </form>
-      </Form>
-      <DataTable columns={columns} data={data}></DataTable>
-      <CardExample className="shadow-soft-2xl" />
+      <TableAgenda></TableAgenda>
     </section>
   );
 }

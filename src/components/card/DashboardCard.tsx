@@ -7,19 +7,21 @@ type Props = {
   amount: number;
   percentage: number;
   icon: React.ReactNode;
+  type?: 'currency' | 'percentage' | 'number';
 };
 
-const DashboardCard = ({ title, amount, percentage, icon }: Props) => {
+const DashboardCard = ({ title, amount, percentage, icon, type = 'currency' }: Props) => {
   return (
     <div className="flex items-center justify-between p-2 gap-2 rounded-lg bg-white  shadow-soft-2xl">
       <div className="flex flex-col pl-2">
         <span className="text-sm text-muted-foreground">{title}</span>
         <div className="flex items-end gap-2">
           <span className="text-xl font-bold text-foreground">
-            {amount.toLocaleString("id-ID", {
+            {type == 'currency' && amount.toLocaleString("id-ID", {
               currency: "IDR",
               style: "currency",
             })}
+            {type == 'number' && amount.toLocaleString("id-ID")}
           </span>
           <span
             className={cn(

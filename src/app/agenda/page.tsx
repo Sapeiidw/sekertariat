@@ -8,7 +8,7 @@ const Page = (props: Props) => {
   return (
     <div className="w-full flex flex-col gap-6">
       <section className="flex flex-col gap-2">
-        <TableAgenda />
+        <TableAgenda form />
       </section>
     </div>
   );
